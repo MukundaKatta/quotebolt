@@ -1,22 +1,47 @@
 # Quotebolt
 
-> Contractors — stop writing quotes by hand.
+Contractors — stop writing quotes by hand. Describe the job in plain words, get an itemized quote with labor, materials, and markup.
 
-Describe the job in plain words. Get an itemized quote with labor, materials, and markup, ready to send.
+**Status:** v0 skeleton — landing page + mocked quote generator. Full AI not yet wired.
 
-## What you get
+**Landing:** https://quotebolt.vercel.app
 
-- **Knows your line items** — Built on tens of thousands of real contractor quotes. Materials priced accurately.
-- **From your truck** — Voice-to-quote on site. Done before you're back in the office.
-- **One-click upgrade to invoice** — When the job's done, the quote becomes the invoice. No retyping.
+---
 
-## Category
+## Stack
 
-Small business. Part of a 50-product exploration of high-demand consumer and SMB markets.
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind v4 |
+| Fonts | Inter via `next/font/google` |
+| Hosting | Vercel (zero config) |
+| Waitlist | https://waitlist-api-sigma.vercel.app |
 
-## Status
+## Run locally
 
-Landing page live with interactive demo and functional waitlist.
+```bash
+pnpm install
+pnpm dev
+```
 
-- **Live:** https://mukundakatta.github.io/quotebolt/
-- **Waitlist API:** https://waitlist-api-sigma.vercel.app/api/waitlist
+Open http://localhost:3000.
+
+## Deploy
+
+Push to `main` — Vercel picks it up automatically. No environment variables required.
+
+## Routes
+
+| Route | Description |
+|---|---|
+| `/` | Landing page (original copy + design preserved) |
+| `/try` | Describe a job, get a mocked itemized quote (labor, materials, markup) |
+| `/api/waitlist` | `POST { email }` → forwards to waitlist-api-sigma |
+
+## What's next
+
+- Wire real AI (job description → accurate quote generation)
+- Voice-to-quote on mobile
+- One-click quote → invoice conversion
